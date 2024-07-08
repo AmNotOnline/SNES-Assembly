@@ -94,7 +94,7 @@ block to insure that code is weaved together efficiently (and unused functions g
 
 Local labels / functions are to be used within another function, and therefore are not expected
 to be documented so thoroughly – what the writer deems necessary should be documented. Local
-labels / functions should be named in `snake_case`, beginning with a "`.`".
+labels / functions should be named in `snake_case`, beginning with a "`_`".
 
 ---
 
@@ -136,6 +136,11 @@ SPRITE_OFFSET_H_i7p8AP      ; 16-bit pointer to array of signed 7.8 fixed point 
 ;   All                                                                                         ;
 CopyToStack:                ; Global label
     ...
+_loop:                      ; Local label
+    ...
+    DEX
+    BEQ _loop               ; Use of local label
+```
 
 WOBJSEL                     ; Register $2125
 ```

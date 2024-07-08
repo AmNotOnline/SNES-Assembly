@@ -13,9 +13,9 @@ BootHandler:
 
     LDA.B #$01
     STA.W MEMSEL            ; Tell the system that we intend on going fast
-    JML   .fast_copy        ; (Dummy) jump to the upper banks for that speed
+    JML   _fast_copy        ; (Dummy) jump to the upper banks for that speed
 
-.fast_copy:
+_fast_copy:
     REP.B #$20              ; A large
     SEP.B #$10              ; X smoll
 
@@ -28,19 +28,19 @@ BootHandler:
     STZ.B $02               ; $2102 & $2103
 
     LDX.B #($0B - $05)      ; Start at addr $210B and work backwards
-.l1:
+_l1:
     STZ.B $05, X            ; Store $00 to bytes at $2105 + X and $2106 + X
     DEX
     DEX                     ; Fastest way to do X -= 2
-    BNE   .l1               ; BNE checks whether last result was NOT 0, and jumps if yes 
+    BNE   _l1               ; BNE checks whether last result was NOT 0, and jumps if yes 
 
     LDX.B #($14 - $0D)
-.l2:
+_l2:
     STZ.B $0D, X            ; Registers here are write-twice
     STZ.B $0D, X            ; WARNING: DOING IT LIKE THIS MIGHT BREAK!!!
     DEX
     DEX
-    BNE   .l2
+    BNE   _l2
 
     STZ.B $1C
     STZ.B $1C
@@ -48,11 +48,11 @@ BootHandler:
     STZ.B $1F
 
     LDX.B #($2E - $23)
-.l3:
+_l3:
     STZ.B $23, X
     DEX
     DEX
-    BNE   .l3
+    BNE   _l3
 
     SEP.B #$30              ; A & X small
     STZ.B $1A
@@ -78,11 +78,11 @@ BootHandler:
     TCD
 
     LDX.B #($0D - $02)
-.l4:
+_l4:
     STZ.B $02, X
     DEX
     DEX
-    BNE   .l4
+    BNE   _l4
     
     STZ.B $00
     LDA.B #$FF
@@ -95,3 +95,7 @@ BootHandler:
 ; Perhaps I could add in some fancy crash screen if I feel like it later
 EmptyHandler:
     STP                     ; Just fucking die
+
+
+
+
