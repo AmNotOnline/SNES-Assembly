@@ -1,0 +1,85 @@
+<mxfile host="Electron" modified="2024-04-05T21:27:03.127Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.1.0 Chrome/120.0.6099.291 Electron/28.2.10 Safari/537.36" etag="C__1T5RnLaM69ok6mMCt" version="24.1.0" type="device">
+  <diagram name="Project Layout" id="zmbAsRiLepH6jEmsuFBy">
+    <mxGraphModel dx="819" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-28" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="404" y="130" width="284" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-8" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="120" y="130" width="284" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-1" value="PROJECT MEMORY LAYOUT" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="122" y="80" width="570" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-2" value="Bank 00/C0" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="160" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-3" value="Bank 7E&lt;div&gt;LoRAM 7E + HiRAM&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="414" y="160" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-4" value="Bank 7F" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="160" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-5" value="Program Bank" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="274" y="160" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-9" value="ROM Banks" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="122" y="130" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-10" value="RAM Banks (Virtual?)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="407" y="130" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-19" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="200" width="120" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-23" value="- - $8000 - -" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="145" y="240" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-24" value="Vital Routines&lt;div&gt;(Boot, V-Blank etc.)&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="130" y="200" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-25" value="&quot;Normal&quot; routines" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="130" y="260" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-26" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="274" y="200" width="120" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-27" value="It&#39;s just 65 KB of ROM, nothing&lt;div&gt;special here&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="274" y="200" width="120" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-29" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="414" y="200" width="120" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-30" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="200" width="120" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-31" value="- - $2000 - -" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="416" y="220" width="116" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-32" value="7E LoRAM" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="416" y="200" width="116" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-33" value="Stack Space" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="416" y="240" width="116" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-34" value="- - $1E00 - -" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="416" y="260" width="116" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-35" value="NMI RAM Page" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="416" y="280" width="116" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-36" value="- - $1D00 - -" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="416" y="300" width="116" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-37" value="Regular HiRAM" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="416" y="320" width="116" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jtNkUYlHnfDMMSry_RWb-38" value="It&#39;s just 65 KB of&amp;nbsp;&lt;div&gt;RAM, nothing&lt;/div&gt;&lt;div&gt;special here&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="560" y="200" width="120" height="150" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
