@@ -40,16 +40,25 @@ enemyHealth_u16AE:                            ; a decent example.
 ```
 
 **Pointers** are notated as the datatype they point to, followed by `P` for 16-bit pointers, or 
-`PP` for 24-bit pointers. When using 16-bit pointers, comments around the definition should 
-make it clear which bank the pointer expects to be extended with. `actorHP_u16PP` would be a
+`Q` for 24-bit pointers. When using 16-bit pointers, comments around the definition should 
+make it clear which bank the pointer expects to be extended with. `actorHP_u16Q` would be a
 pointer to an unsigned 16-bit integer that stores the 24-bit address of the data it references.  
 
-`char` is used to denote a character, `str` for a string (being a neater shorthand for `cA`)
-and uses `sE` as its ending signature[^1], and other custom datatypes can be defined as needed,
-but should be documented and communicated clearly. If this fails, the datatype should be
-defined as `X{# bytes}` to indicate that this is a one-off datatype (like some sort of tuple in
-a normal programming language). In this case, what this complex data structure is, how it is
-made, and where it should be stored etc. should be documented in comments.
+**Other datatypes**:
+
+- `bool` is used for booleans;
+- `char` is used to denote a character;
+- `str` for a string (being a neater shorthand for `cA`) and uses `sE` as its ending signature[^1];
+- Other custom datatypes can be defined as needed, but should be documented and communicated
+clearly. One-off datatypes that aren't concretely defined and used multiple times in the code 
+base (like some sort of tuple in a normal programming language) should be defined as
+`X{# bytes}`. In this case, what this complex data structure is, how it is made, and where it
+should be stored etc. should be documented in comments.
+
+When combining multiple suffixes, the most relevant one should be at the back. For example, a
+16-bit pointer to an array of 24-bit pointers to unsigned 8-bit integers would be named 
+`dataPointer_u8QAP`. To avoid confusion, underscores can be used to separate the different 
+parts of the name.
 
 [^1]: Strings don't need to be null-terminated, nor have they to be encoded in ASCII. If the 
 usage and encoding is clear enough, the datatype can be `str`.
@@ -114,7 +123,7 @@ enemyHealth_u16A            ; array of unsigned 16-bit integers
     .DB ...                 ; (data)
 enemyHealth_u16AE           ; end of array
 
-actorHP_u16PP               ; 24-bit pointer to unsigned 16-bit integer
+actorHP_u16Q                ; 24-bit pointer to unsigned 16-bit integer
 
 choiceSlot_char             ; character
 npcDialogueEntry_str        ; string
@@ -140,7 +149,6 @@ _loop:                      ; Local label
     ...
     DEX
     BEQ _loop               ; Use of local label
-```
 
-WOBJSEL                     ; Register $2125
+    LDA.W WOBJSEL           ; Loading register $2125 into the Accumulator
 ```
