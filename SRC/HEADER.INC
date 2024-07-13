@@ -1,19 +1,18 @@
 ;------------------------------ HEADER FILE --------------------------------;
-; Dit headerbestand is een versie van anderen gevonden op superfamicom.org. ;
-; Deze header is aangepast om HiROM mapping te ondersteunen, in plaats van  ;
-; een LoROM mapping.                                                        ;
+; This header file has been adapted from others found on superfamicom.org.  ;
+; This definition has been altered to support a HiROM mapping, instead of   ;
+; LoROM.                                                                    ;      
 ;---------------------------------------------------------------------------;
 
-.INCLUDE "INCLUDES.INC"
-
-.DEF BANKNO 2               ; I don't know how to properly link files
-                            ; So everything's gonna global
-
 ; == HiROM Memory Layout ==
+
+.BASE $C0
+
+BANKNO = 2
 .ROMBANKMAP
-    BANKSTOTAL BANKNO + 2   ; Insert two virtual memory banks
-    BANKSIZE $10000         ; Banks are 65K
-    BANKS BANKNO + 2
+    BANKSTOTAL  BANKNO + 2  ; Two dummy banks for WRAM
+    BANKSIZE    $10000      ; Banks are 65K
+    BANKS       BANKNO + 2
 .ENDRO
 
 .MEMORYMAP
@@ -58,3 +57,4 @@
     IRQBRK      EmptyHandler
 .ENDEMUVECTOR
 
+.INCLUDE "SRC/LINKTREE.INC"

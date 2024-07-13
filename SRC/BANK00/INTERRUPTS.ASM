@@ -1,9 +1,13 @@
+.BANK $00
+.ORG $8000
+.SECTION "Boothandler" SEMIFREE
 ; The first code the processor runs when booting up
 ; (This code exists both on Bank 00 and C0)
 BootHandler:
     LDA.B #$04              ; Turns OFF: Emulation mode, Decimal mode
     PHA                     ; Turns ON:  Interrupt disable
     PLP
+    XCE                     ; Switch to native mode
 
     REP.B #$10              ; X large
     LDX.W #$1FFF
@@ -13,9 +17,9 @@ BootHandler:
 
     LDA.B #$01
     STA.W MEMSEL            ; Tell the system that we intend on going fast
-    JML   _fast_copy        ; (Dummy) jump to the upper banks for that speed
+    JML   _clear_PPU        ; (Dummy) jump to the upper banks for that speed
 
-_fast_copy:
+_clear_PPU:
     REP.B #$20              ; A large
     SEP.B #$10              ; X smoll
 
@@ -25,34 +29,37 @@ _fast_copy:
 
     LDA.W #$008F
     STA.B $00               ; $2100 & $2101
-    STZ.B $02               ; $2102 & $2103
 
-    LDX.B #($0B - $05)      ; Start at addr $210B and work backwards
-_l1:
-    STZ.B $05, X            ; Store $00 to bytes at $2105 + X and $2106 + X
+    LDX.B #($0B - $01)      ; Clear from $210C to $2102, writing 2 bytes at a time
+-:  STZ.B $01, X
     DEX
-    DEX                     ; Fastest way to do X -= 2
-    BNE   _l1               ; BNE checks whether last result was NOT 0, and jumps if yes 
+    DEX
+    BPL   -
 
+    SEP.B #$30              ; A & X small
     LDX.B #($14 - $0D)
-_l2:
-    STZ.B $0D, X            ; Registers here are write-twice
-    STZ.B $0D, X            ; WARNING: DOING IT LIKE THIS MIGHT BREAK!!!
+-:
+    STZ.B $0D, X
+    STZ.B $0D, X
     DEX
-    DEX
-    BNE   _l2
+    BPL   -
 
     STZ.B $1C
     STZ.B $1C
+    STZ.B $1D
+    STZ.B $1D
     STZ.B $1F
     STZ.B $1F
+    STZ.B $20
+    STZ.B $20
 
+    REP.B #$20              ; A large
     LDX.B #($2E - $23)
-_l3:
+-:
     STZ.B $23, X
     DEX
     DEX
-    BNE   _l3
+    BPL   -
 
     SEP.B #$30              ; A & X small
     STZ.B $1A
@@ -78,24 +85,27 @@ _l3:
     TCD
 
     LDX.B #($0D - $02)
-_l4:
+-:
     STZ.B $02, X
     DEX
     DEX
-    BNE   _l4
+    BPL   -
     
+    SEP.B #$30
     STZ.B $00
     LDA.B #$FF
     STA.B $01
 
+    PEA.W $0000
+    PLD                     ; Reset the Direct Page Register
     JMP.W Main
+.ENDS
 
-
+.BANK $00
+.ORGA $8000
+.SECTION "EmptyHandler" SEMIFREE
 ; This can only have been triggered unintentionally
 ; Perhaps I could add in some fancy crash screen if I feel like it later
 EmptyHandler:
     STP                     ; Just fucking die
-
-
-
-
+.ENDS
